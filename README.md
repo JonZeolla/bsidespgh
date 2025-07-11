@@ -25,7 +25,7 @@ task init
 task build
 
 # Run the image
-docker run jonzeolla/bsidespgh25:0.1.0 --help
+docker run jonzeolla/bsidespgh25:0.2.0 --help
 ```
 
 ## Usage
@@ -63,7 +63,7 @@ python src/main.py --stats
 
 ```bash
 # Generate a vibe using Docker
-docker run jonzeolla/bsidespgh25:0.1.0 --vibe
+docker run jonzeolla/bsidespgh25:0.2.0 --vibe
 
 # Run in continuous mode
 docker run -it jonzeolla/bsidespgh25:0.1.0 --vibe --continuous
