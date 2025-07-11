@@ -2,7 +2,14 @@
 
 [![CI](https://github.com/jonzeolla/bsidespgh25/actions/workflows/commit.yml/badge.svg)](https://github.com/jonzeolla/bsidespgh25/actions/workflows/commit.yml)
 
-Welcome to bsidespgh25
+Welcome to bsidespgh25 - Let's ✨vibe✨ with cybersecurity-themed ASCII art!
+
+## Features
+
+- **Vibe Generator**: Generate random cybersecurity-themed ASCII art and motivational messages
+- **Multiple Art Styles**: Choose from patterns, matrix-style displays, or cyber word art
+- **Continuous Mode**: Keep the vibes flowing with automatic generation
+- **Statistics Tracking**: Monitor your vibe generation sessions
 
 ## Getting Started
 
@@ -19,6 +26,47 @@ task build
 
 # Run the image
 docker run jonzeolla/bsidespgh25:0.1.0 --help
+```
+
+## Usage
+
+### Generate a Single Vibe
+
+```bash
+# Generate a random vibe
+python src/main.py --vibe
+
+# Generate a specific type of vibe
+python src/main.py --vibe --vibe-type matrix
+python src/main.py --vibe --vibe-type pattern
+python src/main.py --vibe --vibe-type word
+```
+
+### Continuous Vibe Mode
+
+```bash
+# Generate vibes continuously (press Ctrl+C to stop)
+python src/main.py --vibe --continuous
+
+# Adjust the delay between vibes (default: 2 seconds)
+python src/main.py --vibe --continuous --delay 5.0
+```
+
+### View Statistics
+
+```bash
+# See vibe generator statistics
+python src/main.py --stats
+```
+
+### Docker Usage
+
+```bash
+# Generate a vibe using Docker
+docker run jonzeolla/bsidespgh25:0.1.0 --vibe
+
+# Run in continuous mode
+docker run -it jonzeolla/bsidespgh25:0.1.0 --vibe --continuous
 ```
 
 If you'd like to build all of the supported docker images, you can set the `PLATFORM` env var to `all` like this:

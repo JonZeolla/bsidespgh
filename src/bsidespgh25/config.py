@@ -46,10 +46,16 @@ def get_args_config() -> dict:
     return vars(parser.parse_args())
 
 
-def setup_logging() -> logging.Logger:
-    """Setup logging"""
+def setup_logging(loglevel: int = logging.WARNING) -> logging.Logger:
+    """Setup logging
+
+    Args:
+        loglevel: Logging level to use
+
+    Returns:
+        Configured logger
+    """
     logging.basicConfig(level="WARNING", format=constants.LOG_FORMAT)
     log = logging.getLogger(__project_name__)
-    configuration = get_args_config()
-    logging.getLogger().setLevel(configuration["loglevel"])
+    logging.getLogger().setLevel(loglevel)
     return log
