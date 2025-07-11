@@ -1,0 +1,9 @@
+# Repository owner
+* @jonzeolla
+
+# GitHub automation oversight
+.github/** @jonzeolla
+
+# Sensitive files
+LICENSE @jonzeolla
+SECURITY.md @jonzeolla

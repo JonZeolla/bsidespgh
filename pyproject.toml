@@ -1,0 +1,94 @@
+[project]
+name = "bsidespgh25"
+version = "0.0.0"
+description = "Let\\'s ✨vibe✨"
+authors = [
+    { name = "Jon Zeolla", email = "Python@jonzeolla.com" }
+]
+dependencies = []
+readme = "README.md"
+requires-python = ">=3.13"
+
+[project.urls]
+Homepage = "https://jonzeolla.com"
+
+[tool.uv.pip]
+universal = true
+generate-hashes = true
+require-hashes = true
+
+[[tool.uv.index]]
+name = "pypi"
+url = "https://pypi.org/simple"
+default = true
+
+[tool.isort]
+profile = "black"
+src_paths = ["src", "tests"]
+
+[tool.mypy]
+plugins = []
+
+[tool.pytest.ini_options]
+addopts = "--cov=src/bsidespgh25 --cov-append --no-cov-on-fail --cov-fail-under=0 --cov-report=html --cov-report=xml --cov-report=term-missing"
+pythonpath = ['src']
+markers = [
+    "unit: marks tests as unit tests (deselect with '-m \"not unit\"')",
+    "integration: marks tests as integration tests (deselect with '-m \"not integration\"')",
+]
+
+[tool.uv]
+managed = true
+dev-dependencies = [
+    "coverage",
+    "pre-commit",
+    "pydantic>=2.0.0",
+    "pyright",
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+    "python-semantic-release",
+    "PyYAML>=6.0.1",
+    "refurb",
+]
+
+[tool.coverage.report]
+fail_under = 80
+
+[tool.pyright]
+include = ["src", "tests"]
+exclude = ["**/__pycache__"]
+
+typeCheckingMode = "standard"
+
+[tool.semantic_release]
+version_toml = [
+    "pyproject.toml:project.version",
+]
+version_variables = [
+    "src/bsidespgh25/__init__.py:__version__:nf",
+    "README.md:docker run jonzeolla/bsidespgh25:nf",
+]
+changelog_file = "CHANGELOG.md"
+commit_parser = "conventional"
+allow_zero_version = true
+commit_author = "Jon Zeolla Automation <automation@jonzeolla.com>"
+commit_message = "chore(release): {version}"
+tag_format = "v{version}"
+
+[tool.semantic_release.branches.release]
+match = "main"
+
+[tool.semantic_release.publish]
+dist_glob_patterns = ["dist/*"]
+upload_to_vcs_release = true
+
+[tool.semantic_release.remote]
+name = "origin"
+type = "github"
+token = { env = "GH_TOKEN" }
+ignore_token_for_push = false
+insecure = false
+
+[tool.ruff]
+target-version = "py313"

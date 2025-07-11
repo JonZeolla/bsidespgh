@@ -1,0 +1,25 @@
+description: "Let's \u2728vibe\u2728"
+name: bsidespgh25
+origin:
+  generated: true
+  template:
+    branch: main
+    commit hash: 18d241d83715080a8484e61f04fda3ea0db1c25b
+    cookiecutter:
+      _checkout: null
+      _repo_dir: /Users/jonzeolla/.cookiecutters/ai-native-python
+      _template: gh:zenable-io/ai-native-python
+      company_domain: jonzeolla.com
+      company_name: Jon Zeolla
+      dockerhub: 'yes'
+      github_org: jonzeolla
+      license: MIT
+      project_name: bsidespgh25
+      project_owner_github_username: jonzeolla
+      project_short_description: "Let's \u2728vibe\u2728"
+      project_slug: bsidespgh25
+      public: 'yes'
+      python_version: '3.13'
+    dirty: false
+    location: https://github.com/zenable-io/ai-native-python.git
+  timestamp: '2025-07-11T14:12:02+00:00'
