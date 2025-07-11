@@ -127,17 +127,17 @@ def test_docker_image():
             cwd=project_root,
         )
 
-        # Test basic docker run without arguments (should raise NotImplementedError)
+        # Test basic docker run without arguments (should show help)
         process = subprocess.run(
             ["docker", "run", "--rm", f"{image_name}:latest"],
             capture_output=True,
             cwd=project_root,
         )
-        assert process.returncode == 1, (
-            f"Expected exit code 1, got: {process.returncode}"
+        assert process.returncode == 0, (
+            f"Expected exit code 0, got: {process.returncode}"
         )
-        assert "NotImplementedError" in process.stderr.decode(), (
-            f"Expected NotImplementedError in stderr, got: {process.stderr.decode()}"
+        assert "--vibe" in process.stdout.decode(), (
+            f"Expected --vibe in stdout, got: {process.stdout.decode()}"
         )
 
         # Test that mutually exclusive arguments fail appropriately

@@ -19,22 +19,24 @@ def test_main_import():
 
 @pytest.mark.unit
 def test_main_function():
-    """Test that main() raises NotImplementedError"""
+    """Test that main() shows help when called with no args"""
     from main import main
 
-    # Mock the argument parsing to avoid conflicts with pytest args
-    with patch("bsidespgh25.config.get_args_config") as mock_args:
-        import logging
-
-        mock_args.return_value = {"loglevel": logging.WARNING}
-
-        with pytest.raises(NotImplementedError):
+    # Mock sys.argv to simulate no arguments
+    with patch("sys.argv", ["main.py"]):
+        # Capture the output
+        with patch("builtins.print") as mock_print:
             main()
+
+            # Check that help was shown
+            print_calls = [str(call) for call in mock_print.call_args_list]
+            assert any("--vibe" in str(call) for call in print_calls)
+            assert any("Tip:" in str(call) for call in print_calls)
 
 
 @pytest.mark.unit
 def test_main_as_script():
-    """Test that main.py raises NotImplementedError when run as a script"""
+    """Test that main.py shows help when run as a script with no args"""
     main_path = Path(__file__).parent.parent / "src" / "main.py"
 
     result = subprocess.run(
@@ -43,6 +45,8 @@ def test_main_as_script():
         text=True,
     )
 
-    # Should exit with code 1 due to NotImplementedError
-    assert result.returncode == 1
-    assert "NotImplementedError" in result.stderr
+    # Should exit successfully
+    assert result.returncode == 0
+    # Should show help text
+    assert "--vibe" in result.stdout
+    assert "Tip:" in result.stdout
